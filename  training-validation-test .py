@@ -3,7 +3,9 @@ import numpy as np
 import random
 
 # still need 
-from rl_algorithm import RLAgent
+from dqn_agent import DQNAgent
+from ppo_agent import PPOAgent
+from a2c_agent import A2CAgent
 
 
 def train_validate_test(agent, env, train_episodes, validation_episodes, test_episodes):
@@ -46,7 +48,12 @@ action_dim = env.action_space.shape[0]
 action_low = env.action_space.low
 action_high = env.action_space.high
 
-agent = RLAgent(state_dim, action_dim, action_low, action_high)
+# Create instances of each agent
+dqn_agent = DQNAgent(env.action_space, env.observation_space)
+ppo_agent = PPOAgent(env.action_space, env.observation_space)
+a2c_agent = A2CAgent(env.action_space, env.observation_space)
+
+agent = dqn_agent 
 
 # -- Set the number of episodes for training, validation, and testing -- 
 train_episodes = 1000
