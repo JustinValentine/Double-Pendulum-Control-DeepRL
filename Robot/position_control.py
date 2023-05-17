@@ -11,9 +11,9 @@ dump_errors(odrv0)
 odrv0.clear_errors()
 
 # Calibrate the motors and encoders if required
-# odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
-# odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
-# time.sleep(10)  # Wait for calibration to finish
+odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+odrv0.axis1.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE
+time.sleep(10)  # Wait for calibration to finish
 
 odrv0.axis0.requested_state = AXIS_STATE_IDLE
 odrv0.axis1.requested_state = AXIS_STATE_IDLE
@@ -32,7 +32,7 @@ odrv0.axis1.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
 odrv0.axis0.controller.config.control_mode = ControlMode.POSITION_CONTROL
 odrv0.axis1.controller.config.control_mode = ControlMode.POSITION_CONTROL
 
-AXIS1_OFFSET = 0.38
+AXIS1_OFFSET = -1*0.0
 
 odrv0.axis0.controller.input_pos = 0
 odrv0.axis1.controller.input_pos = 0 + AXIS1_OFFSET
